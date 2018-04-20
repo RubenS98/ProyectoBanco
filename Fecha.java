@@ -1,4 +1,4 @@
-//Ruben estuvo aqui ayer
+//Ruben estuvo aqui ayer y hoy
 public class Fecha{
     private int mes;
     private int anno;
