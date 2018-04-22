@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class TESTMainCliente {
-    static ArrayList<Cliente> listaClientes = new ArrayList();
+    static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 
     public static void main(String[] args){
 
