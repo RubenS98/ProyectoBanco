@@ -13,4 +13,12 @@ public class Fecha{
     public String FormatoFecha(){
         return String.format("%02d/%d", mes, anno);
     }
+
+    public int getMes(){
+      return mes;
+    }
+
+    public int getAnno(){
+      return anno;
+    }
 }
