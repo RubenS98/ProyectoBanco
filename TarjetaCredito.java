@@ -47,6 +47,31 @@ public class TarjetaCredito{
             saldo = saldo - cantidad;
     }
 
+    public void pickFecha(){
+      Fecha fecha;
+      Scanner lector = new Scanner(System.in);
+      System.out.println("Ingrese la fecha de expiración de la tarjeta");
+      int month = lector.nextInt();
+      int year = lector.nextInt();
+      if (month == fechaExpi.getMes() && year == fechaExpi.getAnno()) {
+        fecha = fechaExpe;
+        retiros();
+      }
+    }
+
+    public void retiros(){
+      Scanner lector = new Scanner(System.in);
+      System.out.println("Ingrese la cantidad a retirar");
+      double cantidad = lector.nextDouble();
+      if (cantidad > saldo) {
+        System.out.println("Fondos insuficientes");
+      } else {
+        saldo = saldo - cantidad;
+        System.out.println("Transacción exitosa");
+        System.out.println("Nuevo saldo: " + saldo);
+      }
+    }
+
     public void printTC(){
         System.out.printf("\nNum. Tarjeta: %d\nTarjeta de Crédito: %s\nSaldo: %.2f\n", numTarjeta, numero, saldo);
         printTipo();
