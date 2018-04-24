@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class TESTMainCliente {
-    static ArrayList<Cliente> listaClientes = new ArrayList();
+    static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 
     public static void main(String[] args){
 
@@ -32,7 +32,7 @@ public class TESTMainCliente {
         int opcion;
 
         lasOpciones="\n MENU\n";
-        lasOpciones+="\t1.- Retiros (falta)\n";
+        lasOpciones+="\t1.- Retiros (99% completado, faltan excepciones)\n";
         lasOpciones+="\t2.- Depositos (falta)\n";
         lasOpciones+="\t3.- Transferencias (falta)\n";
         lasOpciones+="\t4.- Compras (falta)\n";
@@ -50,7 +50,7 @@ public class TESTMainCliente {
                   lc.nextLine();
                   switch(opcion){
                     case 1:
-                      retiros();
+                      retirosMenu();
                       selMenu = true;
                       break;
                     case 2:
@@ -149,9 +149,18 @@ public class TESTMainCliente {
         }
     }//fin MENU2
 
-    public static void retiros(){
-        System.out.println("FALTA Retiros... Regresando a Menu");
-
+    public static void retirosMenu(){
+        Cliente cliente;
+        Scanner lc = new Scanner(System.in);
+        System.out.println("Ingrese su nombre");
+        String nombre = lc.nextLine();
+        for (int i=0; i<listaClientes.size(); i++) {
+          String n = listaClientes.get(i).getNom();
+          if (nombre.equals(n)) {
+            cliente = listaClientes.get(i);
+            cliente.pickTarjeta();
+          }
+        }
         menu();
     }//fin RETIROS
 
