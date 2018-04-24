@@ -13,7 +13,7 @@ public enum TipoTC {
     this.ingresosMin = ingresosMin;
     this.anualidad = anualidad;
     this.min = min;
-    this. max = max;
+    this.max = max;
     }
 
     public double TIIE(){
