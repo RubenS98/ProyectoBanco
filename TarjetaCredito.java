@@ -50,12 +50,23 @@ public class TarjetaCredito{
     public void pickFecha(){
       Fecha fecha;
       Scanner lector = new Scanner(System.in);
-      System.out.println("Ingrese la fecha de expiración de la tarjeta");
-      int month = lector.nextInt();
-      int year = lector.nextInt();
-      if (month == fechaExpi.getMes() && year == fechaExpi.getAnno()) {
-        fecha = fechaExpe;
-        retiros();
+      boolean err = true;
+      while(err){
+        try{
+          System.out.println("Ingrese la fecha de expiración de la tarjeta");
+          int month = lector.nextInt();
+          int year = lector.nextInt();
+          fecha = new Fecha(month, year);
+          if (month == fechaExpi.getMes() && year == fechaExpi.getAnno()) {
+            fecha = fechaExpi;
+            retiros();
+          }
+          err = false;
+        }
+        catch(ArithmeticException ae){
+          System.err.println("Error: Fecha inexistente");
+          lector.nextLine();
+        }
       }
     }
 

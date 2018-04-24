@@ -150,16 +150,34 @@ public class TESTMainCliente {
     }//fin MENU2
 
     public static void retirosMenu(){
-        boolean err = true;
         Cliente cliente;
         Scanner lc = new Scanner(System.in);
-        System.out.println("Ingrese su nombre");
-        String nombre = lc.nextLine();
-        for (int i=0; i<listaClientes.size(); i++) {
-          String n = listaClientes.get(i).getNom();
-          if (nombre.equals(n)) {
-            cliente = listaClientes.get(i);
-            cliente.pickTarjeta();
+        boolean err = true;
+        while(err){
+          try{
+            System.out.print("Ingrese su Id: ");
+            int id = lc.nextInt();
+            if(id > 0){
+                for(int cont = 0; cont < listaClientes.size(); cont++){
+                    if(listaClientes.get(cont).getID() == id){
+                        listaClientes.get(cont).pickTarjeta();
+                    }
+
+                    else{
+                        System.out.println("No se encontro el Id de ese cliente, intente de nuevo.");
+                    }
+                }
+            }
+            else{
+                System.out.println("\nEl Id no existe");
+
+                System.out.print("Digite su Id: ");
+            }
+            err = false;
+          }
+          catch(InputMismatchException ime){
+            System.err.println("Error: No se pueden teclear letras. \n");
+            lc.nextLine();
           }
         }
         menu();
