@@ -32,7 +32,7 @@ public class TESTMainCliente {
         int opcion;
 
         lasOpciones="\n MENU\n";
-        lasOpciones+="\t1.- Retiros (99% completado, faltan excepciones)\n";
+        lasOpciones+="\t1.- Retiros\n";
         lasOpciones+="\t2.- Depositos (falta)\n";
         lasOpciones+="\t3.- Transferencias (falta)\n";
         lasOpciones+="\t4.- Compras (falta)\n";
@@ -150,6 +150,7 @@ public class TESTMainCliente {
     }//fin MENU2
 
     public static void retirosMenu(){
+        boolean err = true;
         Cliente cliente;
         Scanner lc = new Scanner(System.in);
         System.out.println("Ingrese su nombre");
