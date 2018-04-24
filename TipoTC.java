@@ -1,4 +1,4 @@
-//Ja
+//Ja ja
 public enum TipoTC {
     CLASICA(7500, 699, 29, 47),
     ORO(15000, 959, 25, 45),
