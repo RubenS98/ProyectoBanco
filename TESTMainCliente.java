@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class TESTMainCliente {
-    static ArrayList<Cliente> listaClientes = new ArrayList();
+    static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 
     public static void main(String[] args){
 
@@ -169,9 +169,7 @@ public class TESTMainCliente {
                 }
             }
             else{
-                System.out.println("\nEl Id no existe");
-
-                System.out.print("Digite su Id: ");
+                System.out.println("El Id no existe");
             }
             err = false;
           }

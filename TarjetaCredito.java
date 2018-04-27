@@ -53,13 +53,15 @@ public class TarjetaCredito{
       boolean err = true;
       while(err){
         try{
-          System.out.println("Ingrese la fecha de expiración de la tarjeta");
+          System.out.print("Ingrese la fecha de expiración de la tarjeta: ");
           int month = lector.nextInt();
           int year = lector.nextInt();
           fecha = new Fecha(month, year);
           if (month == fechaExpi.getMes() && year == fechaExpi.getAnno()) {
             fecha = fechaExpi;
             retiros();
+          } else{
+            System.out.print("Fecha incorrecta, intente nuevamente: ");
           }
           err = false;
         }
@@ -72,14 +74,26 @@ public class TarjetaCredito{
 
     public void retiros(){
       Scanner lector = new Scanner(System.in);
-      System.out.println("Ingrese la cantidad a retirar");
-      double cantidad = lector.nextDouble();
-      if (cantidad > saldo) {
-        System.out.println("Fondos insuficientes");
-      } else {
-        saldo = saldo - cantidad;
-        System.out.println("Transacción exitosa");
-        System.out.println("Nuevo saldo: " + saldo);
+      boolean err = true;
+      while(err){
+        try{
+          err = true;
+          System.out.print("Ingrese la cantidad a retirar: ");
+          double cantidad = lector.nextDouble();
+          if (cantidad > saldo) {
+            System.out.println("Fondos insuficientes");
+            retiros();
+          } else {
+            saldo = saldo - cantidad;
+            System.out.println("Transacción exitosa");
+            System.out.println("Nuevo saldo: " + saldo);
+          }
+          err = false;
+        }
+        catch(InputMismatchException ime){
+          System.err.println("Error: No se pueden teclear letras");
+          lector.nextLine();
+        }
       }
     }
 

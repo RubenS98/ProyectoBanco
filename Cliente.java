@@ -62,12 +62,14 @@ public class Cliente{
     public void pickTarjeta(){
       TarjetaCredito tarjeta;
       Scanner lector = new Scanner(System.in);
-      System.out.println("Ingrese el número de la tarjeta");
+      System.out.print("Ingrese el número de la tarjeta: ");
       String num = lector.nextLine();
       for (int i=0; i<listaTC.size(); i++) {
         if (num.equals(listaTC.get(i).getNumero())) {
           tarjeta = listaTC.get(i);
           tarjeta.pickFecha();
+        } else {
+          System.out.println("No se encontró tarjeta, intente nuevamente: ");
         }
       }
     }
