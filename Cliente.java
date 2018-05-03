@@ -3,16 +3,19 @@ import java.util.*;
 public class Cliente{
     private int id;
     private static int contid = 0, tarjetaNum = 0;
-    private String nombre, apellido;
-    private int edad;
+    private String nombre, apellido, direccion;
+    private Fecha fechaNacimiento;
+    private long telefono;
     private ArrayList<TarjetaCredito> listaTC = new ArrayList<>();
 
-    public Cliente(String nombre, String apellido, int edad){
+    public Cliente(String nombre, String apellido, String direccion, int dia, int mes, int anio, long telefono){
         contid++;
         id = contid;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.edad = edad;
+        this.direccion=direccion;
+        fechaNacimiento=new Fecha(dia, mes, anio);
+        this.telefono=telefono;
     }
 
     public void removeTarjeta(int pos){
@@ -28,8 +31,11 @@ public class Cliente{
     public void setAp(String ap){
         this.apellido=ap;
     }
-    public void setEdad (int edad){
-        this.edad=edad;
+    public void setDir (String direccion){
+        this.direccion=direccion;
+    }
+    public void setTel (long telefono){
+        this.telefono=telefono;
     }
 
     public String getNom(){
@@ -45,7 +51,7 @@ public class Cliente{
 
 
     public void printCliente(){
-        System.out.printf("\nId: %d\nNombre: %s, %s\nEdad: %d\n", id, apellido, nombre, edad);
+        System.out.printf("\nId: %d\nNombre: %s, %s\nDireccion: %s\n", id, apellido, nombre, direccion);
         if(listaTC.size() > 0)
             for(int cont = 0; cont < listaTC.size(); cont++)
                     listaTC.get(cont).printTC();

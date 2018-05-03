@@ -16,7 +16,10 @@ public class Fecha{
         if (mes < 1 || mes > 12)
             throw new ArithmeticException();
 
-        if (dia < 1 || dia > 31)
+        if ((dia < 1 || dia > 31))
+            throw new ArithmeticException();
+
+        if (mes == 2 && dia > 29)
             throw new ArithmeticException();
 
         this.dia=dia;

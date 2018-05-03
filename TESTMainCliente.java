@@ -13,7 +13,8 @@ public class TESTMainCliente {
         TarjetaCredito tc = new TarjetaCredito("5538274927", 48000.00, 10, 2015, 10, 2019, TipoTC.PLATINO);
         TipoTC tPlatino = TipoTC.PLATINO;
         //Cliente
-        Cliente c = new Cliente("Juan", "Pérez", 28);
+        Cliente c = new Cliente("Juan", "Pérez", "Cerrada de la Soledad #46, La Herradura, Naucalpan, Mexico",
+        13, 12, 1998, 54182486);
 
         listaClientes.add(c);
 
@@ -188,8 +189,9 @@ public class TESTMainCliente {
             boolean err = true;
 
             Cliente c;
-            String nom, ap;
-            int edad;
+            String nom, ap, direccion;
+            int dia, mes, anio;
+            long telefono;
 
             while(err){
                 try{
@@ -200,11 +202,26 @@ public class TESTMainCliente {
                       System.out.print("Apellido(s) del Cliente: ");
                         ap = lc.nextLine();
 
-                      System.out.print("Edad del Cliente: ");
-                        edad = lc.nextInt();
+                      System.out.print("Direccion del Cliente: ");
+                        direccion = lc.nextLine();
+
+                      System.out.print("Dia de Nacimiento: ");
+                        dia = lc.nextInt();
                         lc.nextLine();
 
-                      c = new Cliente(nom, ap, edad);
+                      System.out.print("Mes de Nacimiento: ");
+                        mes = lc.nextInt();
+                        lc.nextLine();
+
+                      System.out.print("Anio de Nacimiento: ");
+                        anio = lc.nextInt();
+                        lc.nextLine();
+
+                      System.out.print("Telefono: ");
+                        telefono = lc.nextLong();
+                        lc.nextLine();
+
+                      c = new Cliente(nom, ap, direccion, dia, mes, anio, telefono);
 
                       System.out.printf("Se ha creado al Cliente %s con el folio %d.%n%n", nom, c.getID());
 
@@ -419,9 +436,10 @@ public class TESTMainCliente {
 
     public static void mDC(){
         Scanner lc = new Scanner(System.in);
-        String newNom, newAp;
+        String newDir;
         String toModify;
-        int newEdad, opcion, position = -1;
+        int opcion, position = -1;
+        long newTel;
         char change;
         boolean idfound = true, sel = true, found = false;
 
@@ -459,32 +477,24 @@ public class TESTMainCliente {
                                 position = cont;
 
                                 System.out.print("\n¿Que quiere modificar?\n"
-                                    + "n. Nombre\n"
-                                    + "a. Apellido\n"
-                                    + "e. Edad\n"
+                                    + "d. Direccion\n"
+                                    + "t. Telefono\n"
                                     + "Escriba la primera letra de lo que quiere modificar: ");
 
                                 while(sel){
                                     toModify = lc.nextLine();
                                     change = toModify.charAt(0);
                                     switch(change){
-                                        case 'N': case 'n':
-                                          System.out.println("Escriba el nuevo nombre del cliente: ");
-                                          newNom = lc.nextLine();
-                                          listaClientes.get(position).setNom(newNom);
+                                        case 'd': case 'D':
+                                          System.out.println("Escriba la nueva direccion del cliente: ");
+                                          newDir = lc.nextLine();
+                                          listaClientes.get(position).setDir(newDir);
                                           sel = false;
                                           break;
                                         case 'A': case 'a':
-                                          System.out.println("Escriba los nuevos apellidos del cliente: ");
-                                          newAp = lc.nextLine();
-                                          listaClientes.get(position).setAp(newAp);
-                                          sel = false;
-                                          break;
-                                        case 'E': case 'e':
-                                          System.out.println("Escriba la nueva edad del cliente: ");
-                                          newEdad = lc.nextInt();
-                                          lc.nextLine();
-                                          listaClientes.get(position).setEdad(newEdad);
+                                          System.out.println("Escriba el nuevo telefono del cliente: ");
+                                          newTel = lc.nextLong();
+                                          listaClientes.get(position).setTel(newTel);
                                           sel = false;
                                           break;
                                         default:
